@@ -4,4 +4,6 @@ import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface AssetRepository : CrudRepository<Asset, Long>
+interface AssetRepository : CrudRepository<Asset, Long> {
+    fun findByName(name: String): Asset?
+}
