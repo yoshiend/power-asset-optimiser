@@ -14,3 +14,28 @@ docker-compose up -d
 ```bash
 ./mvnw spring-boot:run
 ```
+
+## Create an asset
+```bash
+curl --location 'localhost:8080/assets' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "abkd-rel-234-d",
+    "dailyPowerUsage": 1350,
+    "minimumPowerUsage": 37,
+    "maximumPowerUsage": 92
+}'
+```
+
+## Trigger the optimiser
+Calculates and persists the power plan for all assets
+```bash
+curl --location --request POST 'localhost:8080/assets/power-plan' \
+--data ''
+```
+
+## Activate an asset
+Assuming that the assets polls the server to get its power plan
+```bash
+curl --location 'localhost:8080/assets/name/abkd-rel-234-d'
+```

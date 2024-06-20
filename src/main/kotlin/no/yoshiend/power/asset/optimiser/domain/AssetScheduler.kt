@@ -25,7 +25,15 @@ class AssetScheduler(
     @Scheduled(cron = EVERY_MINUTE)
     @SchedulerLock(name = "AssetScheduler", lockAtLeastFor = "PT1M", lockAtMostFor = "PT10M")
     fun scheduleAssets() {
-        val planForDate = LocalDate.now().plusDays(1)
+        //Price api does not publish prices for the next day before 13:00,
+        // so in that case we'll just use the current day
+        val planForDate =
+            if (LocalDateTime.now().isBefore(LocalDateTime.now().withHour(13).withMinute(0))) {
+                LocalDate.now()
+            } else {
+                LocalDate.now().plusDays(1)
+            }
+
         val prices = powerPriceClient.getPrices(
             planForDate.year.toString(),
             String.format("%02d", planForDate.monthValue),

@@ -23,7 +23,7 @@ class OptimiseAsset {
         println("Asset daily power usage: ${asset.dailyPowerUsage}")
         println("Asset minimum power usage: ${asset.minimumPowerUsage}")
         println("Asset maximum power usage: ${asset.maximumPowerUsage}")
-        println("Asset power usage: ${asset.powerPlan.powerUsage.map { it.usage }}")
+        println("Asset power usage: ${asset.powerPlan?.powerUsage?.map { it.usage }}")
         return powerUsage.toSortedMap().values.toList()
     }
 }

@@ -26,18 +26,11 @@ class AssetController(
         return ResponseEntity.ok().body(assets)
     }
 
-    @GetMapping(value = ["/name/{name}"], produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun getAssetByName(@PathVariable("name") name: String): ResponseEntity<Asset> {
-        val assets = assetRepository.findByName(name)
-        return if (assets == null) ResponseEntity.notFound().build()
-        else ResponseEntity.ok().body(assets)
-    }
-
     @GetMapping(
         value = ["/{asset-name}/power-plan"],
         produces = [MediaType.APPLICATION_JSON_VALUE]
     )
-    fun getPowerPlanByAssetName(
+    fun getAssetByName(
         @PathVariable("asset-name") assetName: String
     ): ResponseEntity<AssetPowerPlan> {
         return assetRepository.findByName(assetName)?.let {
@@ -50,6 +43,9 @@ class AssetController(
         produces = [MediaType.APPLICATION_JSON_VALUE]
     )
     fun registerAsset(@RequestBody asset: Asset): ResponseEntity<Asset> {
+        assetRepository.findByName(asset.name)?.let {
+            return ResponseEntity.badRequest().build()
+        }
         return ResponseEntity.ok(assetRepository.save(asset));
     }
 
@@ -61,6 +57,4 @@ class AssetController(
         assetScheduler.scheduleAssets()
         return ResponseEntity.ok().build();
     }
-
-
-    }
+}
