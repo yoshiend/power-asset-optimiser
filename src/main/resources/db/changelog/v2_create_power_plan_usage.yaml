@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: v2
+      author: yoshiend
+      comment: Create power plan usage table
+      changes:
+        - changes:
+            - sql: >
+                ALTER TABLE assets ADD COLUMN power_plan_date DATE;
+                  
+                CREATE TABLE asset_power_usage (
+                  id SERIAL PRIMARY KEY,
+                  asset_id BIGINT NOT NULL,
+                  usage INT NOT NULL,
+                  hour INT NOT NULL,
+                  CONSTRAINT fk_asset_id_power_usage
+                  FOREIGN KEY (asset_id) 
+                  REFERENCES assets(id)
+                );
+      rollback:
+        - sql: >
+            DROP TABLE asset_power_usage;
+            ALTER TABLE assets DROP COLUMN power_plan_date;

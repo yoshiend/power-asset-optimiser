@@ -2,3 +2,6 @@ databaseChangeLog:
     - include:
         file: v1_create_assets_table.yaml
         relativeToChangelogFile: true
+    - include:
+        file: v2_create_power_plan_usage.yaml
+        relativeToChangelogFile: true

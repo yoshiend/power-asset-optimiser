@@ -1,8 +1,8 @@
 package no.yoshiend.power.asset.optimiser.app
 
-import no.yoshiend.power.asset.optimiser.domain.AssetPowerPlan
 import no.yoshiend.power.asset.optimiser.domain.AssetScheduler
 import no.yoshiend.power.asset.optimiser.infrastructure.persistence.Asset
+import no.yoshiend.power.asset.optimiser.infrastructure.persistence.AssetPowerPlan
 import no.yoshiend.power.asset.optimiser.infrastructure.persistence.AssetRepository
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
@@ -33,6 +33,18 @@ class AssetController(
         else ResponseEntity.ok().body(assets)
     }
 
+    @GetMapping(
+        value = ["/{asset-name}/power-plan"],
+        produces = [MediaType.APPLICATION_JSON_VALUE]
+    )
+    fun getPowerPlanByAssetName(
+        @PathVariable("asset-name") assetName: String
+    ): ResponseEntity<AssetPowerPlan> {
+        return assetRepository.findByName(assetName)?.let {
+            ResponseEntity.ok(it.powerPlan)
+        } ?: ResponseEntity.notFound().build()
+    }
+
     @PostMapping(
         consumes = [MediaType.APPLICATION_JSON_VALUE],
         produces = [MediaType.APPLICATION_JSON_VALUE]
@@ -45,7 +57,10 @@ class AssetController(
         value = ["/power-plan"],
         produces = [MediaType.APPLICATION_JSON_VALUE]
     )
-    fun createPowerPlan(): ResponseEntity<List<AssetPowerPlan>> {
-        return ResponseEntity.ok(assetScheduler.scheduleAssets());
+    fun createPowerPlan(): ResponseEntity<Unit> {
+        assetScheduler.scheduleAssets()
+        return ResponseEntity.ok().build();
     }
-}
+
+
+    }
