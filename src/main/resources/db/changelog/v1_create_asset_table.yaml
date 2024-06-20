@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1
+      author: yoshiend
+      comment: Create Asset table
+      changes:
+        - changes:
+            - sql: >
+                CREATE TABLE asset (
+                  id BIGSERIAL PRIMARY KEY,
+                  name TEXT NOT NULL,
+                  power_usage_24_hours INT NOT NULL,
+                  minimum_power_usage INT NOT NULL,
+                  maximum_power_usage INT NOT NULL,
+                  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+                );
+      rollback:
+        - sql: >
+            DROP TABLE asset;
