@@ -1,4 +1,4 @@
 databaseChangeLog:
     - include:
-        file: v1_create_asset_table.yaml
+        file: v1_create_assets_table.yaml
         relativeToChangelogFile: true

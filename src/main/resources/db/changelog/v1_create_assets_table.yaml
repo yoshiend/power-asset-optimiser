@@ -2,14 +2,14 @@ databaseChangeLog:
   - changeSet:
       id: v1
       author: yoshiend
-      comment: Create Asset table
+      comment: Create Assets table
       changes:
         - changes:
             - sql: >
-                CREATE TABLE asset (
+                CREATE TABLE assets (
                   id BIGSERIAL PRIMARY KEY,
-                  name TEXT NOT NULL,
-                  power_usage_24_hours INT NOT NULL,
+                  name TEXT UNIQUE NOT NULL,
+                  daily_power_usage INT NOT NULL,
                   minimum_power_usage INT NOT NULL,
                   maximum_power_usage INT NOT NULL,
                   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -17,4 +17,4 @@ databaseChangeLog:
                 );
       rollback:
         - sql: >
-            DROP TABLE asset;
+            DROP TABLE assets;
