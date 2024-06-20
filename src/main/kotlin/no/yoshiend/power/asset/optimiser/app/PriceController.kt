@@ -15,6 +15,6 @@ class PriceController(
 
     @GetMapping
     fun getPrices(): List<GetPowerPriceResponse> {
-        return powerPriceClient.getPrices("2024", "06","20", PriceArea.NO1)
+        return powerPriceClient.getPrices("2024", "06","21", PriceArea.NO1).sortedBy { it.timeStart }
     }
 }

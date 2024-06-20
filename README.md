@@ -1,6 +1,9 @@
 # power-asset-optimiser
+Service that optimises the power usage of assets.
 
 # Run instructions
+To run the app requires Docker and a minimum of Java 17.
+
 1. Start up Postgres using docker-compose
 ```bash
 docker-compose up -d
@@ -35,7 +38,7 @@ curl --location --request POST 'localhost:8080/assets/power-plan' \
 ```
 
 ## Activate an asset
-Assuming that the assets polls the server to get its power plan
+Assuming that the assets can poll the server to get its power plan
 ```bash
-curl --location 'localhost:8080/assets/name/abkd-rel-234-d'
+curl --location 'localhost:8080/assets/abkd-rel-234-d'
 ```

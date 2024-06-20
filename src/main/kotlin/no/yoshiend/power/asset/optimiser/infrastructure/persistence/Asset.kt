@@ -7,7 +7,7 @@ import org.springframework.data.relational.core.mapping.Table
 
 @Table(name = "assets")
 data class Asset(
-    @Id@
+    @Id
     @JsonIgnore
     val id: Long? = null,
     val name: String,

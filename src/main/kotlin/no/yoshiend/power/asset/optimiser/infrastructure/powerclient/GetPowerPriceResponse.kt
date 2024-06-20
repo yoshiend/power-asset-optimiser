@@ -9,7 +9,7 @@ data class GetPowerPriceResponse(
     @JsonProperty("EUR_per_kWh")
     val pricePerKwhEur: Double,
     @JsonProperty("EXR")
-    val expires: Double,
+    val exchangeRate: Double,
     @JsonProperty("time_start")
     val timeStart: OffsetDateTime,
     @JsonProperty("time_end")

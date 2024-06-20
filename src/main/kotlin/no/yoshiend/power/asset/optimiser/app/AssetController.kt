@@ -27,7 +27,7 @@ class AssetController(
     }
 
     @GetMapping(
-        value = ["/{asset-name}/power-plan"],
+        value = ["/{asset-name}"],
         produces = [MediaType.APPLICATION_JSON_VALUE]
     )
     fun getAssetByName(

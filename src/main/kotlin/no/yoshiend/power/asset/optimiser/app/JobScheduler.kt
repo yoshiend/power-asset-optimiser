@@ -14,7 +14,7 @@ class JobScheduler(
         const val EVERY_MINUTE = "0 * * * * *"
     }
 
-    @Scheduled(cron = EVERY_MINUTE)
+    @Scheduled(cron = HOURLY)
     @SchedulerLock(name = "AssetScheduler", lockAtLeastFor = "PT1M", lockAtMostFor = "PT10M")
     fun scheduleAssets() {
         assetScheduler.scheduleAssets()
