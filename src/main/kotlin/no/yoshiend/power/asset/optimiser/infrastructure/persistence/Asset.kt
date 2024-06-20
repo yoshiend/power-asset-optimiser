@@ -1,4 +1,4 @@
-package no.yoshiend.power.asset.optimiser
+package no.yoshiend.power.asset.optimiser.infrastructure.persistence
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import org.springframework.data.annotation.Id

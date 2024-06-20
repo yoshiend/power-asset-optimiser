@@ -1,4 +1,4 @@
-package no.yoshiend.power.asset.optimiser
+package no.yoshiend.power.asset.optimiser.infrastructure.powerclient
 
 enum class PriceArea {
     NO1,

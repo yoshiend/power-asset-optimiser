@@ -1,9 +1,7 @@
-package no.yoshiend.power.asset.optimiser
+package no.yoshiend.power.asset.optimiser.infrastructure.powerclient
 
 import com.fasterxml.jackson.annotation.JsonProperty
-import java.time.LocalDateTime
 import java.time.OffsetDateTime
-import java.time.OffsetTime
 
 data class GetPowerPriceResponse(
     @JsonProperty("NOK_per_kWh")

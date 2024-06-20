@@ -1,4 +1,4 @@
-package no.yoshiend.power.asset.optimiser
+package no.yoshiend.power.asset.optimiser.infrastructure.powerclient
 
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.http.MediaType

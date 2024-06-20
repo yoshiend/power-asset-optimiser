@@ -1,5 +1,8 @@
-package no.yoshiend.power.asset.optimiser
+package no.yoshiend.power.asset.optimiser.app
 
+import no.yoshiend.power.asset.optimiser.infrastructure.powerclient.GetPowerPriceResponse
+import no.yoshiend.power.asset.optimiser.infrastructure.powerclient.PowerPriceClient
+import no.yoshiend.power.asset.optimiser.infrastructure.powerclient.PriceArea
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController

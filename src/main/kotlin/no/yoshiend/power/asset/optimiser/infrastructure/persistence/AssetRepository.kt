@@ -1,4 +1,4 @@
-package no.yoshiend.power.asset.optimiser
+package no.yoshiend.power.asset.optimiser.infrastructure.persistence
 
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
